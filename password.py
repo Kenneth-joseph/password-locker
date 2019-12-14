@@ -3,17 +3,13 @@ import random
 import pyperclip
 
 
-class Password(object):
-    pass
+class User(object):
+    User_list = []
 
-    def __init__(self, first_name, phone, email):
-        self.first_name = first_name
-        self.phone = phone
-        self.email = email
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
-
-new_password = Password("KENT", "09", "kent@gmail")
-print(new_password.email)
 
 password = input("into your password length required ")
 length = int(password)
