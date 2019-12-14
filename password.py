@@ -19,7 +19,7 @@ password = input("into your password length required ")
 length = int(password)
 char = 'abcdefghijklmnopqrstuvwxyz1234567890'
 for p in range(4):
-    passwordF=''
+    passwordF = ''
     for c in range(length):
-     passwordF += random.choice(char)
+        passwordF += random.choice(char)
     print(passwordF)
