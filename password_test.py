@@ -35,6 +35,20 @@ class TestUser(unittest.TestCase):
         self.new_credentials.delete_credential()
         self.assertEqual(len(User.User_list), 1)
 
+    def test_find_credentials_by_account(self):
+        self.new_credentials.save_details()
+        test_credentials = User("joz", "whatsapp", "1234567@")
+        test_credentials.save_details()
+        found_account = User.find_by_account("whatsapp")
+        self.assertEqual(found_account.passwords, test_credentials.passwords)
+
+    def test_credentials_exists(self):
+        self.new_credentials.save_details()
+        test_credentials = User("me", "linkedIn", "12@12")
+        test_credentials.save_details()
+        credentials_exists = User.credentials_exists("linkedIn")
+        self.assertTrue(credentials_exists)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -16,6 +16,19 @@ class User(object):
 
     def delete_credential(self):
         User.User_list.remove(self)
+
+    @classmethod
+    def find_by_account(cls, string):
+        for credentials in cls.User_list:
+            if credentials.account == string:
+                return credentials
+
+    @classmethod
+    def credentials_exists(cls,string):
+        for credentials in cls.User_list:
+            if credentials.account == string:
+                return True
+        return False
 # password = input("into your password length required ")
 # length = int(password)
 # char = 'abcdefghijklmnopqrstuvwxyz1234567890'
