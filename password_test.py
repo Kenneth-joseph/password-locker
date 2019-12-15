@@ -1,5 +1,6 @@
 import unittest
 from password import User
+import pyperclip
 
 
 class TestUser(unittest.TestCase):
@@ -48,6 +49,17 @@ class TestUser(unittest.TestCase):
         test_credentials.save_details()
         credentials_exists = User.credentials_exists("linkedIn")
         self.assertTrue(credentials_exists)
+
+    def test_display_credentials(self):
+        self.assertEqual(User.display_credentials(), User.User_list)
+
+    def test_copy_passwords(self):
+        """
+        this method tests coping the password to clip board
+        """
+        self.new_credentials.save_details()
+        User.copy_passwords("facebook")
+        self.assertEqual(self.new_credentials.passwords, pyperclip.paste())
 
 
 if __name__ == '__main__':

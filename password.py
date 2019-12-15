@@ -19,16 +19,35 @@ class User(object):
 
     @classmethod
     def find_by_account(cls, string):
+        """
+        method that confirms that the credentials account is a string and its available
+        """
         for credentials in cls.User_list:
             if credentials.account == string:
                 return credentials
 
     @classmethod
-    def credentials_exists(cls,string):
+    def credentials_exists(cls, string):
+        """
+        method that helps to confirm the existence of the account and the returns boolean
+        """
         for credentials in cls.User_list:
             if credentials.account == string:
                 return True
         return False
+
+    @classmethod
+    def display_credentials(cls):
+        """
+        method that returns the User list
+        """
+        return cls.User_list
+
+    @classmethod
+    def copy_passwords(cls, string):
+        password_found = User.find_by_account(string)
+        pyperclip.copy(password_found.passwords)
+
 # password = input("into your password length required ")
 # length = int(password)
 # char = 'abcdefghijklmnopqrstuvwxyz1234567890'
