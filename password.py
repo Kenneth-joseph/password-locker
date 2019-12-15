@@ -4,12 +4,15 @@ import pyperclip
 
 
 class User(object):
-
     User_list = []
 
-    def __init__(self, username, passwords):
+    def __init__(self, username, account, passwords):
         self.username = username
         self.passwords = passwords
+        self.account = account
+
+    def save_details(self):
+        User.User_list.append(self)
 
 
 password = input("into your password length required ")
