@@ -19,8 +19,8 @@ def save_details(credentials):
     credentials.save_details()
 
 
-def delete_credentials(credentials):
-    credentials.delete_credentials()
+def delete_credential(credentials):
+    credentials.delete_credential()
 
 
 def find_by_account(string):
@@ -45,7 +45,7 @@ def main():
     while True:
         print("Use these short codes : cc - create a new credentials, dc - display credentials, fc -find a "
               "credentials, "
-              "ex -exit the credentials list ")
+              "ex -exit the credentials list dlc-delete existing account")
         short_code = input().lower()
         if short_code == 'cc':
             print("new credentials")
@@ -67,22 +67,34 @@ def main():
 
                 for credentials in display_credential():
                     print(f"{credentials.username} {credentials.account} {credentials.passwords}")
-                    print('\n')
-                else:
-                    print('\n')
-                    print("you don't seem to have any account saved yet")
-                    print('\n')
+                print('\n')
+            else:
+                print('\n')
+                print("you don't seem to have any account saved yet")
+                print('\n')
+
+        elif short_code == 'dlc':
+            print("enter the account you'd love to delete")
+            delete_account = input()
+            if credential_exists(delete_account):
+                del_account = find_by_account(delete_account)
+                delete_credential(del_account)
+                print("your credentials has been deleted")
+                print('\n')
+            else:
+                print("credentials doesnt exist")
 
         elif short_code == 'fc':
             print("enter the account you want to search for")
-            account = input()
-            if find_by_account(string):
-                search_credentials = find_by_account(account)
+            credentials_search = input()
+            if find_by_account(credentials_search):
+                search_credentials = find_by_account(credentials_search)
                 print(f"{search_credentials.username} {search_credentials.account} {search_credentials.passwords}")
                 print('_' * 20)
 
             else:
                 print("credentials doesnt exist")
+
         elif short_code == 'ex':
             print("bye....")
 
