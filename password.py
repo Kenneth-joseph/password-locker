@@ -48,6 +48,18 @@ class User(object):
         password_found = User.find_by_account(string)
         pyperclip.copy(password_found.passwords)
 
+    # @classmethod
+    # def generate_password(cls):
+    #     # length = int(plength)
+    #      char = 'abcdefghijklmnopqrstuvwxyz1234567890'
+    #      for p in range(4):
+    #          passwordF = ''
+    #         for c in range(length):
+    #             passwordF += random.choice(char)
+    #        print(passwordF)
+
+# class Account(object):
+
 # password = input("into your password length required ")
 # length = int(password)
 # char = 'abcdefghijklmnopqrstuvwxyz1234567890'

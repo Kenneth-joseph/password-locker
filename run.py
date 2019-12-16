@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 import string
-
+import random
 from password import User
 
 
@@ -54,9 +54,20 @@ def main():
             username = input()
             print("enter the account")
             account = input()
-            print("enter password")
-            password = input()
+            print("how would you wish to create your password, if generate then select 'G' else select 'C' ?")
+            unit = input().upper()
+            if unit == 'G':
+                print("input your password length required ")
+                generated = input()
+                length = int(generated)
+                char = 'abcdefghijklmnopqrstuvwxyz1234567890'
+                password = ''
+                for c in range(length):
+                    password += random.choice(char)
+                print('\n')
+                print(f"the password generated is: {password}")
             save_details(create_credentials(username, account, password))  # creating new credentials
+
             print('\n')
             print(f"new credentials for {account} is created")
             print('\n')
