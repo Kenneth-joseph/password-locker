@@ -1,4 +1,6 @@
 #!/usr/bin/env python3.6
+import string
+
 from password import User
 
 
@@ -21,11 +23,11 @@ def delete_credentials(credentials):
     credentials.delete_credentials()
 
 
-def find_credentials(string):
+def find_by_account(string):
     return User.find_by_account(string)
 
 
-def check_availability(string):
+def credential_exists(string):
     return User.credentials_exists(string)
 
 
@@ -61,3 +63,33 @@ def main():
         elif short_code == 'dc':
             if display_credential():
                 print("here is a list of all your credentials")
+                print('\n')
+
+                for credentials in display_credential():
+                    print(f"{credentials.username} {credentials.account} {credentials.passwords}")
+                    print('\n')
+                else:
+                    print('\n')
+                    print("you don't seem to have any account saved yet")
+                    print('\n')
+
+        elif short_code == 'fc':
+            print("enter the account you want to search for")
+            account = input()
+            if find_by_account(string):
+                search_credentials = find_by_account(account)
+                print(f"{search_credentials.username} {search_credentials.account} {search_credentials.passwords}")
+                print('_' * 20)
+
+            else:
+                print("credentials doesnt exist")
+        elif short_code == 'ex':
+            print("bye....")
+
+            break
+        else:
+            print("I didn't quite catch that please use the short codes provided")
+
+
+if __name__ == '__main__':
+    main()
