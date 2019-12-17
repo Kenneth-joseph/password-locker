@@ -66,6 +66,12 @@ def main():
                     password += random.choice(char)
                 print('\n')
                 print(f"the password generated is: {password}")
+            elif unit == 'C':
+                print("enter your password please")
+                password = input()
+                print('\n')
+                print(f"the password created is: {password}")
+
             save_details(create_credentials(username, account, password))  # creating new credentials
 
             print('\n')
