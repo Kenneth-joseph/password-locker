@@ -1,15 +1,18 @@
 import unittest
 from password import User
 import pyperclip
+from password import Account
 
 
 class TestUser(unittest.TestCase):
 
     def setUp(self):
         self.new_credentials = User("Kenneth", "facebook", "kys1112")
+        self.new_account = Account("kent", "wed12ty")
 
     def tearDown(self):
         User.User_list = []
+        Account.account_list = []
 
     def test_init(self):
         """
@@ -18,10 +21,16 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_credentials.username, "Kenneth")
         self.assertEqual(self.new_credentials.account, "facebook")
         self.assertEqual(self.new_credentials.passwords, "kys1112")
+        self.assertEqual(self.new_account.name, "kent")
+        self.assertEqual(self.new_account.passright, "wed12ty")
 
     def test_save_details(self):
         self.new_credentials.save_details()
         self.assertEqual(len(User.User_list), 1)
+
+    def test_save_account(self):
+        self.new_account.save_account()
+        self.assertEqual(len(Account.account_list), 1)
 
     def test_multiple_saves(self):
         self.new_credentials.save_details()
@@ -29,12 +38,25 @@ class TestUser(unittest.TestCase):
         test_credential.save_details()
         self.assertEqual(len(User.User_list), 2)
 
+    def test_multiple_saves(self):
+        self.new_account.save_account()
+        test_account = Account("Dan", "12jt3er")
+        test_account.save_account()
+        self.assertEqual(len(Account.account_list), 2)
+
     def test_delete_credentials(self):
         self.new_credentials.save_details()
         test_credential = User("ken", "intagram", "iii111")
         test_credential.save_details()
         self.new_credentials.delete_credential()
         self.assertEqual(len(User.User_list), 1)
+
+    def test_delete_account(self):
+        self.new_account.save_account()
+        test_account = Account("joice", "@12rews")
+        test_account.save_account()
+        self.new_account.delete_account()
+        self.assertEqual(len(Account.account_list), 1)
 
     def test_find_credentials_by_account(self):
         self.new_credentials.save_details()

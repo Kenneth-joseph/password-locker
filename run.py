@@ -2,6 +2,7 @@
 import string
 import random
 from password import User
+from password import Account
 
 
 def create_credentials(username, account, passwords):
@@ -10,6 +11,25 @@ def create_credentials(username, account, passwords):
     """
     new_credentials = User(username, account, passwords)
     return new_credentials
+
+
+def create_account(name, passright):
+    """
+    creating new account
+    """
+    new_account = Account(name, passright)
+    return new_account
+
+
+def save_account(account):
+    """
+    helps us save the account details
+    """
+    account.save_account()
+
+
+def delete_account(account):
+    account.delete_account()
 
 
 def save_details(credentials):
@@ -45,7 +65,7 @@ def main():
     while True:
         print("Use these short codes : cc - create a new credentials, dc - display credentials, fc -find a "
               "credentials, "
-              "ex -exit the credentials list dlc-delete existing account")
+              "ex -exit the credentials list, dlc-delete existing account ,ca-create account")
         short_code = input().lower()
         if short_code == 'cc':
             print("new credentials")
@@ -77,6 +97,26 @@ def main():
             print('\n')
             print(f"new credentials for {account} is created")
             print('\n')
+        elif short_code == 'ca':
+            print("enter your name")
+            name = input()
+            print("enter your password")
+            passright = input()
+            print(f"account  {name} is created")
+            print('\n')
+            save_account(create_account(name, passright))  # saves account
+            print('\n')
+            print("log in to your account, enter your username")
+            lname = input()
+            print("enter your password")
+            pword = input()
+            if lname == name and pword == passright:
+                print(f"welcome to your account {name}")
+            elif lname != name and pword != passright:
+                print('\n')
+                print("invalid name or password please try again")
+                break
+
         elif short_code == 'dc':
             if display_credential():
                 print("here is a list of all your credentials")
@@ -92,9 +132,9 @@ def main():
 
         elif short_code == 'dlc':
             print("enter the account you'd love to delete")
-            delete_account = input()
-            if credential_exists(delete_account):
-                del_account = find_by_account(delete_account)
+            del_account = input()
+            if credential_exists(del_account):
+                del_account = find_by_account(del_account)
                 delete_credential(del_account)
                 print("your credentials has been deleted")
                 print('\n')
