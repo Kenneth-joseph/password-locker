@@ -58,8 +58,9 @@ class User(object):
     #             passwordF += random.choice(char)
     #        print(passwordF)
 
-# class Account(object):
 
+class Account(object):
+    pass
 # password = input("into your password length required ")
 # length = int(password)
 # char = 'abcdefghijklmnopqrstuvwxyz1234567890'
