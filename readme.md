@@ -20,7 +20,10 @@ This project serves all users as long us they are literate and have accounts the
 ## Technologies Used
 >The following are the list of technology used
  - Python
-
+## BDD
+ - Go to my github account,got the password locker repository and and clone the repo.
+ - Open it in a python IDE, and click run.
+ - The terminal from where the code runs, you will see instruction provided for one to follow while using the app.
 ## Contact me
  > To contact me please call this number : 0708037786
  ## Note
