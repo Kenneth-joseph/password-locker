@@ -30,7 +30,7 @@ This project serves all users as long us they are literate and have accounts the
 
 Copyright (c) 2019 Kenneth Ochieng Joseph
 
-Permission is hereby granted me Kenneth Ochieng Joseph the deveeloper of this site, free of charge, to any person obtaining a copy
+Permission is hereby granted me Kenneth Ochieng Joseph the developer of this site, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "MY PORTFOLIO"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
